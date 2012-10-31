@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/928/trunk/OSMMapTilePackager/src/org/osmdroid/mtp/util
+END
+FolderFileCounter.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/897/trunk/OSMMapTilePackager/src/org/osmdroid/mtp/util/FolderFileCounter.java
+END
+Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/897/trunk/OSMMapTilePackager/src/org/osmdroid/mtp/util/Util.java
+END
+FolderDeleter.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/897/trunk/OSMMapTilePackager/src/org/osmdroid/mtp/util/FolderDeleter.java
+END
+DbCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/905/trunk/OSMMapTilePackager/src/org/osmdroid/mtp/util/DbCreator.java
+END
+FolderZipper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/928/trunk/OSMMapTilePackager/src/org/osmdroid/mtp/util/FolderZipper.java
+END

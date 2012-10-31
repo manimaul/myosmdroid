@@ -1,0 +1,8 @@
+K 13
+svn:mergeinfo
+V 302
+/branches/issue-43-jar/OSMMapTilePackager/src/org/andnav2/osm:194-224
+/branches/issue-43-no-service/OSMMapTilePackager/src/org/andnav2/osm:175-192
+/branches/issue-81-renderer-as-interface/OSMMapTilePackager/src/org/andnav2/osm:328-353
+/branches/release_3_0_4/OSMMapTilePackager/src/org/osmdroid:929-931
+END

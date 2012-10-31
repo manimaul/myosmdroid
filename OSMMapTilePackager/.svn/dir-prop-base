@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 48
+bin
+MANIFEST.MF
+osmdroid-*.jar
+.settings
+target
+
+END

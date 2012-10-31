@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/1101/trunk/OpenStreetMapViewer/src/org/osmdroid/samples
+END
+SampleWithTilesOverlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/791/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleWithTilesOverlay.java
+END
+SampleWithMinimapItemizedoverlayWithFocus.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/891/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleWithMinimapItemizedoverlayWithFocus.java
+END
+SampleWithMinimapZoomcontrols.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/791/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleWithMinimapZoomcontrols.java
+END
+SampleWithMinimapItemizedoverlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/1101/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleWithMinimapItemizedoverlay.java
+END
+SampleLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/829/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleLoader.java
+END
+SampleOSMContributor.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/639/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleOSMContributor.java
+END
+SampleExtensive.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/836/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleExtensive.java
+END
+SampleMapActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/998/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleMapActivity.java
+END
+SampleWithTilesOverlayAndCustomTileSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/860/trunk/OpenStreetMapViewer/src/org/osmdroid/samples/SampleWithTilesOverlayAndCustomTileSource.java
+END

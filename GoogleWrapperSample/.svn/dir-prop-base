@@ -1,0 +1,9 @@
+K 10
+svn:ignore
+V 28
+gen
+bin
+proguard.cfg
+target
+
+END

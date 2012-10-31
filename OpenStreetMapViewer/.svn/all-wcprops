@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1104/trunk/OpenStreetMapViewer
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1104/trunk/OpenStreetMapViewer/pom.xml
+END
+default.properties
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/936/trunk/OpenStreetMapViewer/default.properties
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1100/trunk/OpenStreetMapViewer/.classpath
+END
+project.properties
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1020/trunk/OpenStreetMapViewer/project.properties
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1050/trunk/OpenStreetMapViewer/.project
+END
+AndroidManifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1098/trunk/OpenStreetMapViewer/AndroidManifest.xml
+END

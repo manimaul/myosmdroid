@@ -1,0 +1,8 @@
+K 13
+svn:mergeinfo
+V 320
+/branches/issue-43-jar/osmdroid-android/OSMDroid_CleanUp_Settings.xml:194-224
+/branches/issue-43-no-service/osmdroid-android/OSMDroid_CleanUp_Settings.xml:175-192
+/branches/issue-81-renderer-as-interface/osmdroid-android/OSMDroid_CleanUp_Settings.xml:328-353
+/branches/release_3_0_4/OSMDroid_CleanUp_Settings.xml:929-931
+END

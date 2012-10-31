@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1106/trunk/OSMMapTilePackager
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1105/trunk/OSMMapTilePackager/pom.xml
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/932/trunk/OSMMapTilePackager/build.xml
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/1106/trunk/OSMMapTilePackager/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1050/trunk/OSMMapTilePackager/.project
+END
+build-jar.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/1027/trunk/OSMMapTilePackager/build-jar.xml
+END
