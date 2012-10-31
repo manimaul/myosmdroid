@@ -295,12 +295,24 @@ public class MapView extends ViewGroup implements IMapView, MapViewConstants,
 		this.setZoomLevel(mZoomLevel); // revalidate zoom level
 		postInvalidate();
 	}
+	
+	/**
+	 * This does not set the zoom level.  However this is useful to retain a zoomlevel 
+	 * while applying a non-zooming animation to the MapView such as rotation
+	 * @param targetZoomLevel
+	 *             the zoom level to retain
+	 */
+	public void setTargetZoomLevel(final int targetZoomLevel) {
+	    if (targetZoomLevel<=getMaxZoomLevel() && targetZoomLevel>=getMinZoomLevel()) {
+	        this.mTargetZoomLevel.set(targetZoomLevel);
+	    }
+	}
 
 	/**
 	 * @param aZoomLevel
 	 *            the zoom level bound by the tile source
 	 */
-	int setZoomLevel(final int aZoomLevel) {
+	protected int setZoomLevel(final int aZoomLevel) {
 		final int minZoomLevel = getMinZoomLevel();
 		final int maxZoomLevel = getMaxZoomLevel();
 
@@ -1141,14 +1153,9 @@ public class MapView extends ViewGroup implements IMapView, MapViewConstants,
 							in.getLongitudeE6() / 1E6,
 							getZoomLevel(), out);
 			out.offset(offsetX, offsetY);
-			if (Math.abs(out.x - getScrollX()) >
-				Math.abs(out.x - TileSystem.MapSize(getZoomLevel()) - getScrollX())) {
-				out.x -= TileSystem.MapSize(getZoomLevel());
-			}
-			if (Math.abs(out.y - getScrollY()) >
-				Math.abs(out.y - TileSystem.MapSize(getZoomLevel()) - getScrollY())) {
-				out.y -= TileSystem.MapSize(getZoomLevel());
-			}
+			
+			wrapPointsToDateline(out, getScrollX(), getZoomLevel());
+			
 			return out;
 		}
 
@@ -1169,7 +1176,11 @@ public class MapView extends ViewGroup implements IMapView, MapViewConstants,
 			final Point out = reuse != null ? reuse : new Point();
 
 			TileSystem
-					.LatLongToPixelXY(latituteE6 / 1E6, longitudeE6 / 1E6, MAXIMUM_ZOOMLEVEL, out);
+					.LatLongToPixelXY(
+							latituteE6 / 1E6, 
+							longitudeE6 / 1E6, 
+							MAXIMUM_ZOOMLEVEL, out);
+			
 			return out;
 		}
 
@@ -1189,8 +1200,67 @@ public class MapView extends ViewGroup implements IMapView, MapViewConstants,
 
 			final int zoomDifference = MAXIMUM_ZOOMLEVEL - getZoomLevel();
 			out.set((in.x >> zoomDifference) + offsetX, (in.y >> zoomDifference) + offsetY);
+			
+			wrapPointsToDateline(out, getScrollX(), getZoomLevel());
+			
 			return out;
 		}
+		
+		/**
+		 * Manipulates point x coordinates to wrap around dateline when point is West of 90W
+		 * and East of 90E according to center of MapView being East or West of Prime meridian
+		 * 
+		 */
+		
+		public void wrapPointsToDateline(final Point point, final int reference, final int zoomLevel) {
+			//both point.x and reference are in easter hemisphere... do nothing
+			if (reference >= 0 && point.x >= 0)
+				return;
+			//both point.x and reference are in western hemisphere... do nothing
+			if (reference <= 0 && point.x <= 0)
+				return;
+			
+			//180 degrees longitude in pixels
+			final int oneEightyDegrees = TileSystem.MapSize(zoomLevel) / 2;
+			
+			//reference more than 180 degrees longitude from point
+			if (Math.abs(reference) + Math.abs(point.x) >= oneEightyDegrees) {
+				if (reference > point.x) {
+					//reference west of dateline ... wrap point.x east of dateline
+					point.x = (oneEightyDegrees - Math.abs(point.x)) + oneEightyDegrees;
+					return;
+				} else {
+					//reference east of dateline ... wrap point.x west of dateline
+					point.x = -((oneEightyDegrees - Math.abs(point.x)) + oneEightyDegrees);
+					return;
+				}
+			}
+		}
+		
+		public boolean wrapsTooFar(final int destination, final int reference, final int zoomLevel) {
+		    
+			//120 degrees longitude in pixels
+			final int oneTwentyDegrees = TileSystem.MapSize(zoomLevel) / 3;
+			
+			if (destination < -oneTwentyDegrees && reference > 0) {		
+			return true;
+			}
+			
+			if (destination > oneTwentyDegrees && reference < 0) {
+			return true;
+			}
+			
+			if (reference < -oneTwentyDegrees && destination > 0) {		
+			return true;
+			}
+			
+			if (reference > oneTwentyDegrees && destination < 0) {
+			return true;
+			}
+			
+			return false;
+			
+			}
 
 		/**
 		 * Translates a rectangle from <I>screen coordinates</I> to <I>intermediate coordinates</I>.

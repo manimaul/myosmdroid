@@ -198,16 +198,23 @@ public class PathOverlay extends Overlay {
 		Point projectedPoint1;
 
 		// clipping rectangle in the intermediate projection, to avoid performing projection.
-		final Rect clipBounds = pj.fromPixelsToProjected(pj.getScreenRect());
+        final Rect clipBounds = pj.getScreenRect();
 
 		mPath.rewind();
 		projectedPoint0 = this.mPoints.get(size - 1);
-		mLineBounds.set(projectedPoint0.x, projectedPoint0.y, projectedPoint0.x, projectedPoint0.y);
+		
+		//setup mTempPoint1 for mLineBounds
+        pj.toMapPixelsTranslated(projectedPoint0, this.mTempPoint1);
+        mLineBounds.set(this.mTempPoint1.x, this.mTempPoint1.y, this.mTempPoint1.x, this.mTempPoint1.y);
 
 		for (int i = size - 2; i >= 0; i--) {
 			// compute next points
 			projectedPoint1 = this.mPoints.get(i);
-			mLineBounds.union(projectedPoint1.x, projectedPoint1.y);
+			
+			//setup mTempPoint2 for mLineBounds
+			screenPoint1 = pj.toMapPixelsTranslated(projectedPoint1, this.mTempPoint2);
+            
+            mLineBounds.union(screenPoint1.x, screenPoint1.y);
 
 			if (!Rect.intersects(clipBounds, mLineBounds)) {
 				// skip this line, move to next point
@@ -222,8 +229,13 @@ public class PathOverlay extends Overlay {
 				screenPoint0 = pj.toMapPixelsTranslated(projectedPoint0, this.mTempPoint1);
 				mPath.moveTo(screenPoint0.x, screenPoint0.y);
 			}
-
-			screenPoint1 = pj.toMapPixelsTranslated(projectedPoint1, this.mTempPoint2);
+			
+			// skip this line, move to next point
+        	if (pj.wrapsTooFar(screenPoint1.x, screenPoint0.x, mapView.getZoomLevel())) {
+        		projectedPoint0 = projectedPoint1;
+				screenPoint0 = null;
+				continue;
+        	}
 
 			// skip this point, too close to previous point
 			if (Math.abs(screenPoint1.x - screenPoint0.x) + Math.abs(screenPoint1.y - screenPoint0.y) <= 1) {
@@ -236,7 +248,9 @@ public class PathOverlay extends Overlay {
 			projectedPoint0 = projectedPoint1;
 			screenPoint0.x = screenPoint1.x;
 			screenPoint0.y = screenPoint1.y;
-			mLineBounds.set(projectedPoint0.x, projectedPoint0.y, projectedPoint0.x, projectedPoint0.y);
+			// setup mTempPoint1 for mLineBounds
+			pj.toMapPixelsTranslated(projectedPoint0, this.mTempPoint1);
+			mLineBounds.set(this.mTempPoint1.x, this.mTempPoint1.y, this.mTempPoint1.x, this.mTempPoint1.y);
 		}
 
 		canvas.drawPath(mPath, this.mPaint);
